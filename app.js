@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
-const productRoute = require('./routes/products');
+const productRoute = require('./src/routes/product.route');
 
 app.use('/api/products', productRoute);
 
