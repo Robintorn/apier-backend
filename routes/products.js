@@ -45,4 +45,14 @@ route.put('/:_id', (req, res, next) => {
     });
 })
 
+route.delete('/:_id', (req, res, next) => {
+    Product.findByIdAndRemove({_id: "5b8ecc36b672c52534dfc2df"}, (err, response) => {
+       if(err) {
+           console.log('Couldnt remove product');
+       }
+       console.log(response);
+       res.status(200).json(response);
+    })
+})
+
 module.exports = route;
