@@ -46,7 +46,7 @@ route.put('/:_id', (req, res, next) => {
 })
 
 route.delete('/:_id', (req, res, next) => {
-    Product.findByIdAndRemove({_id: "5b8ecc36b672c52534dfc2df"}, (err, response) => {
+    Product.findByIdAndRemove({_id: req.body._id}, (err, response) => {
        if(err) {
            console.log('Couldnt remove product');
        }
