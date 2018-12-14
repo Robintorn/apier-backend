@@ -1,7 +1,7 @@
 {
     "env": {
         "SERVER_HOST": "localhost",
-        "SERVER_PORT": 3001,
+        "SERVER_PORT": 3002,
 
         "MONGO_DB_CONNECTIONSTRING": "mongodb://localhost:27017/inlamningovning",
 

@@ -5,7 +5,7 @@ const users = require('../controllers/user.controller.js');
 
 route.post('/signup', users.signUp);
 route.post('/signin', users.signIn);
-route.put('/:email', checkAuth, users.updatePwd);
+route.put('/:id', checkAuth, users.updatePwd);
 route.get('/', checkAuth, users.getUsers);
 
 module.exports = route;

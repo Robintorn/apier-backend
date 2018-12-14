@@ -24,4 +24,7 @@ const productRoute = require('./src/routes/product.route');
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
 
+//Images
+app.use('/uploads', express.static('uploads'));
+
 module.exports = app;

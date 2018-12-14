@@ -8,11 +8,25 @@ exports.getProducts = (req, res) => {
     })
 };
 
+exports.getProduct = (req, res) => {
+    Product.find({_id: req.params.id}, function(err, docs){
+        if(err) res.json(err);
+        else    res.status(200).json(docs);
+    });	
+}
+
 exports.createProduct = (req, res, next) => {
     let product = new Product({
         _id: new mongodb.Types.ObjectId(),
         name: req.body.name,
-        description: req.body.description
+        description: req.body.description,
+        samarbetspartner: req.body.samarbetspartner,
+        sektion: req.body.sektion,
+        top: req.body.top,
+        left: req.body.left,
+        productImage: req.file.path,
+        editPosition: false,
+        editProperties: false
     })
 
     product.save()
@@ -25,7 +39,13 @@ exports.createProduct = (req, res, next) => {
 
 
 exports.updateProduct = (req, res, next) => {
-    Product.findOneAndUpdate({_id: req.body._id}, {$set:{name: req.body.name, description: req.body.description}}, {new: true}, function(err, doc){
+    Product.findOneAndUpdate({
+        _id: req.body._id},
+        {$set:{name: req.body.name, 
+        description: req.body.description, 
+        samarbetspartner: req.body.samarbetspartner,         
+        top: req.body.top,
+        left: req.body.left,}}, {new: true}, function(err, doc){
         err ? res.status(500).json({error: err}) : res.status(200).json(doc)
     });
 };
