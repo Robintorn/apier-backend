@@ -7,7 +7,7 @@ const app = express();
 // Connection URL. This is where your mongodb server is running.
 
 //(Focus on This Variable)
-var url = 'mongodb://robin:robin123@ds145474.mlab.com:45474/food';      
+var url = process.env.MONGOLAB_URI;      
 //(Focus on This Variable)
 
 // Use connect method to connect to the Server
