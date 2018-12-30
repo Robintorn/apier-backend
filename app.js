@@ -3,9 +3,24 @@ const bodyparser = require('body-parser');
 const mongodb = require('mongoose');
 const app = express();
 
-mongodb.connect('mongodb://robin:7w83LnnuP6XedADg@cluster0-shard-00-00-opstr.mongodb.net:27017,cluster0-shard-00-01-opstr.mongodb.net:27017,cluster0-shard-00-02-opstr.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true');
+
+// Connection URL. This is where your mongodb server is running.
+
+//(Focus on This Variable)
+var url = 'mongodb://robin:robin123@ds145474.mlab.com:45474/food';      
+//(Focus on This Variable)
+
+// Use connect method to connect to the Server
+  mongodb.connect(url, function (err, db) {
+  if (err) {
+    console.log('Unable to connect to the mongoDB server. Error:', err);
+  } else {
+    console.log('Connection established to', url);
+  }
+});
 
 app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', "*");
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept, Authorization"
